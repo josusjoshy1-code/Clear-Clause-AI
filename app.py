@@ -19,19 +19,37 @@ st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
     
-    html, body, [class*="css"] {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .stApp {
-        background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #070a12 60%, #030408 100%);
-        color: #f8fafc;
-    }
-    
-    section[data-testid="stSidebar"] {
-        background: #090d16 !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.08);
-    }
+    /* 1. Force entire page and containers to dark mode */
+html, body, [class*="css"], [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #090d16 !important;
+    color: #f8fafc !important;
+}
+
+.stApp {
+    background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #090d16 80%) !important;
+    color: #f8fafc !important;
+}
+
+/* 2. Lock sidebar background */
+section[data-testid="stSidebar"] {
+    background: #060911 !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 3. Force dark inputs, text areas, and select boxes */
+[data-testid="stTextArea"] textarea,
+[data-testid="stTextInput"] input,
+div[data-baseweb="select"] > div {
+    background-color: #111827 !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* 4. Ensure all labels and standard markdown stay white/silver */
+label, p, span, h1, h2, h3, h4 {
+    color: #f8fafc !important;
+}
     
     .hero-title {
         font-size: 2.8rem;
