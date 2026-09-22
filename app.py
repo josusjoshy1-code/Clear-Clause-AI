@@ -185,7 +185,11 @@ if "tos_input_field" not in st.session_state:
 # --- SIDEBAR CONFIGURATION ---
 with st.sidebar:
     st.markdown("<h3 style='color: #a855f7;'>⚙️ Engine Config</h3>", unsafe_allow_html=True)
-    api_key = st.text_input("Gemini API Key", type="password", placeholder="AIzaSy...")
+    if "GEMINI_API_KEY" in st.secrets:
+        api_key = st.secrets["GEMINI_API_KEY"]
+    else:
+          st.error("Backend configuration error: API key not set.")
+          st.stop()
     st.caption("🔒 Analyzed strictly in-memory.")
     
     st.markdown("<hr style='border-color: rgba(255,255,255,0.08);'>", unsafe_allow_html=True)
